@@ -1,0 +1,53 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: registerservice
+          uri: http://localhost:8081
+          predicates:
+            - Path=/user/**
+        - id: musicservice
+          uri: http://localhost:8085
+          predicates:
+            - Path=/spotify/**
+        - id: wishlistservice
+          uri: http://localhost:8084
+          predicates:
+            - Path=/wishlist/**
+        - id: authenticationservice
+          uri: http://localhost:8086
+          predicates:
+            - Path=/auth/**
+
+
+
+server:
+  port: 8087
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:5000/eureka/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
